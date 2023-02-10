@@ -1,0 +1,8 @@
+<%= fields = [:name, :description].join(";")%>
+
+<%= @categories.each do |category|%>
+  
+  <% name = category.name %>
+  <% description = category.description %>
+  <%= [name, description].join(";") %>
+<% end %>

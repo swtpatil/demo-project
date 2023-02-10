@@ -57,7 +57,8 @@ group :development, :test do
   gem 'rspec-rails', ">= 3.9.0"
   gem "letter_opener"
   gem 'shoulda-matchers'
-  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails', '~> 6.1.0'
 end
 
 group :development do
@@ -76,6 +77,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rubocop-rails', require: false
 end
 gem 'cssbundling-rails'
 

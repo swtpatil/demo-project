@@ -1,13 +1,15 @@
 <h1>Categories</h1>
 
-<table class="table table-sm table-striped ml-4" style="max-width: 30rem;" >
+<table class="table table-sm table-striped ml-4" style="max-width: 90rem;" >
 
   <thead  class="thead-dark">
 	<tr>
   <th>ID</th>
   <th>Category Name</th>
   <th>Description</th>
-  <th>Select</th>
+  <th>Products</th>
+  <th>Update</th>
+  <th>Delete</th>
   </tr>
   </thead>
 
@@ -17,7 +19,9 @@
     <td><%= category.id %></td>
     <td><%= category.name %></td>
     <td><%= category.description %></td>
-    <td><%= button_to 'Select' %></td>
+    <td><%= link_to "Products", category_products_path(category.id), class: "btn btn-info" %></td>
+    <td><%= link_to "Update", edit_category_path(category.id), class: "btn btn-info" %></td>
+    <td><%= link_to "Destroy", category_path(category.id), class: "btn btn-info" %></td>
   </tr>
 
   <% end %>
@@ -25,4 +29,5 @@
 
 </table>
 
-<%= link_to "New Category", new_category_path %>
+<%= link_to "New Category", new_category_path, class: "btn btn-info" %>
+<%= link_to "Download as CSV", categories_path(format: :csv), download: ["Categories", Date.today].join(""), class: "btn btn-info" %>
