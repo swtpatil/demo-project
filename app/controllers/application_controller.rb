@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :print_display_message
-  before_action :authenticate_customer!
 
   after_action :after_display_message
 

@@ -10,10 +10,11 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-  def create 
+  def create
     @category = Category.new(category_param)
     if @category.save
       #CategoryMailer.with(category: @category).new_category.deliver_later
+      CategoryMailer.new_category(@category).deliver_now
       redirect_to @category
     else
       render new
@@ -35,8 +36,8 @@ class CategoriesController < ApplicationController
   end
  
   def destroy
-     @category.destroy
-     redirect_to root_path
+    @category.destroy
+    redirect_to root_path
   end
 
   private 
