@@ -1,0 +1,24 @@
+<h1>Order</h1>
+<table class="table table-sm table-striped ml-4" style="max-width: 90rem;" >
+
+  <thead  class="thead-dark">
+	<tr>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+
+	<tbody>
+  <% @orders.each do |order| %>
+  <tr>
+    <td><%= product.id %></td>
+    <td><%= product.name %></td>
+    <td><%= order.quantity %></td>
+    <td><%= product.price %></td>
+  </tr>
+  <% end %>
+	</tbody>
+
+</table>
