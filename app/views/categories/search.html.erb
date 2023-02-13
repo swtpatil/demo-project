@@ -1,0 +1,22 @@
+<h3>Category Search</h3>
+
+<table class="table table-success table-striped-columns ml-4" style="max-width: 90rem;" >
+  <thead  class="table table-dark">
+	<tr>
+  <th>ID</th>
+  <th>Category Name</th>
+  <th>Description</th>
+  </tr>
+  </thead>
+
+	<tbody>
+  <% @results.each do |result| %>
+  <tr>
+    <td><%= result.id %></td>
+    <td><%= result.name %></td>
+    <td><%= result.description %></td>
+  </tr>
+  <% end %>
+	</tbody>
+
+</table>

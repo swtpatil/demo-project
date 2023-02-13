@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   #resources :customers
 
   resources :categories do
-    resources :products
+    resources :products do 
+      resources :orders
+    end
   end
 end

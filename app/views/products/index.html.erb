@@ -1,0 +1,32 @@
+<h1>Products</h1>
+<table class="table table-success table-striped" style="max-width: 90rem;" >
+
+  <thead  class="table table-dark">
+	<tr>
+    <th>Select</th>
+    <th>ID</th>
+    <th>Product Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Rating</th>
+    <th>Select Product</th>
+  </tr>
+  </thead>
+
+	<tbody>
+  <% @products.each do |product| %>
+  <tr>
+    <td><%= check_box_tag "products", product.id  %></td>
+    <td><%= product.id %></td>
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
+    <td><%= product.price %></td>
+    <td><%= product.rating %></td>
+    <td><%= link_to "Select", category_products_path(product.id), class: "btn btn-info" %></td>
+  </tr>
+  <% end %>
+	</tbody>
+
+</table>
+
+<%= link_to 'Back', categories_path, class: "btn btn-info" %>

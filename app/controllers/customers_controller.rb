@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: %i[show edit update destroy]
-
+  before_action :authenticate_customer!
   def index 
     @customers = Customer.all
     #render json: @customers
