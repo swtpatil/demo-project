@@ -1,19 +1,20 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show edit update destroy]
+  # layout 'admin'
+  before_action :set_category, only: %i[edit update destroy]
 
   def index
     @categories = Category.all
-    #render json: @categories
+    # render json: @categories
   end
 
-  def new 
+  def new
     @category = Category.new
   end
 
   def create
     @category = Category.new(category_param)
     if @category.save
-      #CategoryMailer.with(category: @category).new_category.deliver_later
+      # CategoryMailer.with(category: @category).new_category.deliver_later
       CategoryMailer.new_category(@category).deliver_now
       redirect_to @category
     else
@@ -22,15 +23,16 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @category = Category.includes(:products).find(params[:id])
   end
 
-  def edit
+  def edit 
   end
 
   def update
     if @category.update(category_param)
       redirect_to @category
-    else 
+    else
       render edit
     end
   end
@@ -40,7 +42,17 @@ class CategoriesController < ApplicationController
     redirect_to root_path
   end
 
-  private 
+  def search
+    if params[:search].blank?
+      redirect_to categories_path
+    else
+      @input = params[:search].downcase
+      @results = Category.where("name LIKE ?", "%#{@input}%")
+    end
+  end
+
+  private
+
   def category_param
     params.require(:category).permit(:name, :description)
   end
